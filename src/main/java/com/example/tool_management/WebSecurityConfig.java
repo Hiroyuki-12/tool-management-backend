@@ -3,13 +3,13 @@ package com.example.tool_management;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -27,11 +27,10 @@ public class WebSecurityConfig {
         .cors(cors -> {})              // CORS有効化
         .authorizeHttpRequests(auth -> auth
             .requestMatchers("/login", "/logout").permitAll()  // loginとlogoutは常に許可
-            .anyRequest().authenticated()                     // それ以外は認証必須
+            .anyRequest().authenticated()                      // それ以外は認証必須
         )
         .formLogin(form -> form
             .loginProcessingUrl("/login")  // フロントエンドがPOSTするURL
-            // ↓↓↓ ここがリダイレクトを止める処理 ↓↓↓
             .successHandler((request, response, authentication) -> {
               response.setStatus(HttpServletResponse.SC_OK);  // 成功時は200 OK
             })
@@ -45,7 +44,8 @@ public class WebSecurityConfig {
             exception.authenticationEntryPoint((request, response, authException) -> {
               response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);  // 未認証時は401
             })
-        );
+        )
+        .httpBasic();  // ← Basic認証有効化
 
     return http.build();
   }
@@ -72,6 +72,7 @@ public class WebSecurityConfig {
     return new InMemoryUserDetailsManager(user);
   }
 }
+
 
 
 
