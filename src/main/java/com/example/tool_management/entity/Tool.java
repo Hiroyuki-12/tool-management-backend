@@ -10,8 +10,10 @@ public class Tool {
   private Long id;
   private String workName;
   private String photoUrl;
+  @Column(name = "tool_name")
   private String name;
   private int quantity = 0;
+  @Column(name = "is_selected")
   private boolean isSelected;
   private String status;
 
