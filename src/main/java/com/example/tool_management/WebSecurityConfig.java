@@ -53,7 +53,7 @@ public class WebSecurityConfig {
   @Bean
   public CorsConfigurationSource corsConfigurationSource() {
     CorsConfiguration configuration = new CorsConfiguration();
-    configuration.setAllowedOrigins(List.of("http://localhost:3000"));  // フロントURL
+    configuration.setAllowedOrigins(List.of("http://54.87.3.97:3000"));  // ★ 修正：EC2のフロントURL
     configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "PATCH"));
     configuration.setAllowedHeaders(List.of("*"));
     configuration.setAllowCredentials(true);  // Cookieを許可
@@ -72,6 +72,7 @@ public class WebSecurityConfig {
     return new InMemoryUserDetailsManager(user);
   }
 }
+
 
 
 
