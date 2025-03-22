@@ -14,7 +14,7 @@ public class WebConfig {
       @Override
       public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-            .allowedOrigins("http://54.87.3.97:3000")  // フロントエンドのURL
+            .allowedOrigins("http://54.81.159.176:3000")  // フロントエンドのURL
             .allowedMethods("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS")
             .allowCredentials(true);
       }
