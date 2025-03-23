@@ -1,5 +1,6 @@
 package com.example.tool_management.entity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 @Entity
@@ -8,13 +9,25 @@ public class Tool {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
+  @Column(name = "work_name")
+  @JsonProperty("work_name")          // ← JSON対応
   private String workName;
+
+  @Column(name = "photo_url")
+  @JsonProperty("photo_url")          // ← JSON対応
   private String photoUrl;
+
   @Column(name = "tool_name")
+  @JsonProperty("tool_name")          // ← JSONのキーが tool_name に対応！
   private String name;
+
   private int quantity = 0;
-  @Column(name = "is_selected")
+
+  @Column(name = "isSelected")
+  @JsonProperty("isSelected")         // ← JSONのキーもそのまま → 念のため明示
   private boolean isSelected;
+
+  @JsonProperty("status")             // ← これも合わせておくと安心
   private String status;
 
   // デフォルトコンストラクタ（JPA用）
