@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/tools")
-@CrossOrigin(origins = "http://18.232.107.8:3000")
+@CrossOrigin(origins = "http://54.172.221.49:3000")
 public class ToolController {
   private final ToolRepository toolRepository;
 
