@@ -30,7 +30,7 @@
 以下の動画では、アプリのログインから道具追加・チェック操作までの流れをご覧いただけます。  
 実際の操作感や画面構成の確認にご活用ください。
 
-[▶ デモ動画を再生する](https://github.com/Hiroyuki-12/tool-management-backend/issues/1#issuecomment-2753216448)
+[▶ デモ動画を再生する](https://github.com/user-attachments/assets/97739471-b620-4fbf-9aac-68bfc0b41a19)
 
 ---
 
