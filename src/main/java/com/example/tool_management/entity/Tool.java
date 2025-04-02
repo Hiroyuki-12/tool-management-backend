@@ -3,6 +3,13 @@ package com.example.tool_management.entity;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
+/**
+ * Toolエンティティクラス。
+ * データベースの tools テーブルに対応し、
+ * 各フィールドがカラムとマッピングされる。
+ * フロントエンドからのJSONとのやり取りのために@JsonPropertyを付与。
+ */
+
 @Entity
 @Table(name = "tools")
 public class Tool {
@@ -10,30 +17,35 @@ public class Tool {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
   @Column(name = "work_name")
-  @JsonProperty("work_name")          // ← JSON対応
+  @JsonProperty("work_name")
   private String workName;
 
   @Column(name = "photo_url")
-  @JsonProperty("photo_url")          // ← JSON対応
+  @JsonProperty("photo_url")
   private String photoUrl;
 
   @Column(name = "tool_name")
-  @JsonProperty("tool_name")          // ← JSONのキーが tool_name に対応！
+  @JsonProperty("tool_name")
   private String name;
 
   private int quantity = 0;
 
   @Column(name = "isSelected")
-  @JsonProperty("isSelected")         // ← JSONのキーもそのまま → 念のため明示
+  @JsonProperty("isSelected")
   private boolean isSelected;
 
-  @JsonProperty("status")             // ← これも合わせておくと安心
+  @JsonProperty("status")
   private String status;
 
-  // デフォルトコンストラクタ（JPA用）
+  /**
+   * デフォルトコンストラクタ（JPAが内部的に使用）
+   */
   public Tool() {}
 
-  // 値をセットするコンストラクタ
+  /**
+   * フィールドをまとめて設定するコンストラクタ。
+   * 主にデータ登録やテスト時に使用。
+   */
   public Tool(String workName, String photoUrl,String name, int quantity, boolean isSelected, String status) {
     this.workName = workName;
     this.photoUrl= photoUrl;
